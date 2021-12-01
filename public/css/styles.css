@@ -1,0 +1,29 @@
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+    background-color: #86C232;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+
+body {
+    background-color: #222629;
+}
+
+h1 {
+    color : white;
+}
+
+p {
+    color : #6B6E70;
+}

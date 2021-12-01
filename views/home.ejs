@@ -1,0 +1,17 @@
+<%- include("header") -%>
+    <% for (let i = 0; i < blogTitles.length; ++i) { %>
+        <h1><%= blogTitles[i] %></h1>
+        <p><%= blogContent[i] %></p>
+    <% } %>
+    <!-- Add a new blog-->
+    <form action = "/" method = "POST">
+        <div class="form-group">
+          <h1>Add a new post</h1>
+          <input type="text" class="form-control" name="title" placeholder="Enter Title Here">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="content" placeholder="Enter Content Here">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+<%- include("footer") -%>
