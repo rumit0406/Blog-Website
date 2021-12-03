@@ -15,13 +15,26 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-let blogTitles = [], blogContent = [];
+const blogTitles = [], blogContent = [], path = [];
+
+function makePath(i) {
+  path.push("/" + blogTitles[i].replace(/ /g, "-"));
+  console.log(path[i]);
+  app.get(path[i], (req, res) => {
+    res.render("post", {
+      title : blogTitles[i],
+      content : blogContent[i],
+    })
+  })
+}
 
 function fillSomeTestBlogs() {
   blogTitles.push("Shingeki no Kyojin");
   blogContent.push("On that day, mankind received a grim reminder. We lived in fear of the Titans and were disgraced to live in these cages we called walls.");
   blogTitles.push("Naruto");
   blogContent.push("Because they saved me from myself, they rescued me from my loneliness. They were the first to accept me for who I am. They’re my friends.");
+  makePath(0);
+  makePath(1);
 }
 
 fillSomeTestBlogs();
@@ -36,6 +49,7 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   blogTitles.push(req.body.title);
   blogContent.push(req.body.content);
+  makePath(blogContent.length - 1);
   res.redirect("/");
 })
 

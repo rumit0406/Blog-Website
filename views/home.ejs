@@ -1,7 +1,11 @@
 <%- include("header") -%>
     <% for (let i = 0; i < blogTitles.length; ++i) { %>
-        <h1><%= blogTitles[i] %></h1>
-        <p><%= blogContent[i] %></p>
+      <h1><%= blogTitles[i] %></h1>
+      <% const path = "/" + blogTitles[i].replace(/ /g, "-"); %>
+      <form action = <%= path %> method = "GET">
+        <%= blogContent[i].slice(0, 100) + "..." %>
+        <button type="submit" class="btn btn-link btn-sm">Read More</button>
+      </form>
     <% } %>
     <!-- Add a new blog-->
     <form action = "/" method = "POST">
